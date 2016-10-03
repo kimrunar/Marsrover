@@ -19,41 +19,42 @@ public class Client
     public static void main(String args[]) throws IOException
     {
         
-            String host = "localhost";
-            int port = 25000;
-            InetAddress address = InetAddress.getByName(host);
-            socket = new Socket(address, port);
- 
-            //Send the message to the server
-            OutputStream os = socket.getOutputStream();
-            OutputStreamWriter osw = new OutputStreamWriter(os);
-            BufferedWriter bw = new BufferedWriter(osw);
-            Scanner s = new Scanner(System.in);
-            String number = "";
+            
             
             while(true){
-            System.out.println("Write command to rover");
-            number = s.next();
- 
-            String sendMessage = number + "\n";
-            bw.write(sendMessage);
-            bw.flush();
-            System.out.println("Message sent to the server : "+ sendMessage);
+            	String host = "localhost";
+                int port = 25000;
+                InetAddress address = InetAddress.getByName(host);
+                socket = new Socket(address, port);
+     
+                //Send the message to the server/rover
+                OutputStream outputStream = socket.getOutputStream();
+                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
+                BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+                Scanner scanner = new Scanner(System.in);
+                String command = "";
+            	
+	            System.out.println("Write command to rover");
+	            command = scanner.next();
+	 
+	            String sendMessage = command + "\n";
+	            bufferedWriter.write(sendMessage);
+	            bufferedWriter.flush();
+	            System.out.println("Message sent to the server : "+ sendMessage);
+	            
+	 
+	            //Get the return message from the server/Rover
+	            InputStream inputStream = socket.getInputStream();
+	            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+	            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+	            String message = bufferedReader.readLine();
+	            System.out.println("Message received from the server : " + message);		            
+	            	            	                  
             
- 
-            //Get the return message from the server
-            InputStream is = socket.getInputStream();
-            InputStreamReader isr = new InputStreamReader(is);
-            BufferedReader br = new BufferedReader(isr);
-            String message = br.readLine();
-            System.out.println("Message received from the server : " + message);
-            
-            
-            }
-            
+            }            
     }
 }
-            
+           
             
         
     

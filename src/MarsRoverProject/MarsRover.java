@@ -30,10 +30,10 @@ public class MarsRover
             {
                 //Reading the message from client
             	socket = serverSocket.accept();
-                InputStream is = socket.getInputStream();
-                InputStreamReader isr = new InputStreamReader(is);
-                BufferedReader br = new BufferedReader(isr);
-                String instructions = br.readLine();
+                InputStream inputStream = socket.getInputStream();
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String instructions = bufferedReader.readLine();
                 System.out.println("Message received from Houston is " + instructions);
                 
                 //Moving the rover
@@ -45,11 +45,11 @@ public class MarsRover
                 //Sending the response back to the client.
                 OutputStream os = socket.getOutputStream();
                 OutputStreamWriter osw = new OutputStreamWriter(os);
-                BufferedWriter bw = new BufferedWriter(osw);
-                bw.write(returnMessage);
+                BufferedWriter bufferedWriter = new BufferedWriter(osw);
+                bufferedWriter.write(returnMessage);
                 System.out.println("Message sent to Houston is "+ returnMessage);
-                bw.flush();
-                isr.close();
+                bufferedWriter.flush();
+                inputStreamReader.close();
                 socket.close();
                 
             }

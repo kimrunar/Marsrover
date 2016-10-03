@@ -40,7 +40,7 @@ public class Control {
 		}
 	}
 
-	// prints the rovers current position. Message from mars
+	// returns the rovers current position and facing direction. Message from mars
 	public String roversPosition(Rover r) {
 		char direction = 'l';
 		String pos = "";
@@ -62,7 +62,7 @@ public class Control {
 		return pos;
 
 	}
-
+	//Returns the string of the positions
 	private String printPos(int x, int y, char d) {
 		String pos = x + " " + y + " " + d;
 		return pos;

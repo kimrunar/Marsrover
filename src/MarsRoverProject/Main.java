@@ -17,6 +17,8 @@ public class Main {
 	
 			ctr.instructions(rover2, "MMRMMRMRRM");
 			System.out.println(ctr.roversPosition(rover2));
+			
+			
 	
 			// Should give values [1 3 N ] and [ 5 1 E ]
 			// It does!

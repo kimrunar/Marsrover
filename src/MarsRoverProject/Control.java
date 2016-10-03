@@ -41,27 +41,31 @@ public class Control {
 	}
 
 	// prints the rovers current position. Message from mars
-	public void roversPosition(Rover r) {
+	public String roversPosition(Rover r) {
 		char direction = 'l';
+		String pos = "";
 
 		if (r.getCurrentlyFacing() == NORTH) {
 			direction = 'N';
-			printPos(r.getX(), r.getY(), direction);
+			pos = printPos(r.getX(), r.getY(), direction);
 		} else if (r.getCurrentlyFacing() == WEST) {
 			direction = 'W';
-			printPos(r.getX(), r.getY(), direction);
+			pos = printPos(r.getX(), r.getY(), direction);
 		} else if (r.getCurrentlyFacing() == SOUTH) {
 			direction = 'S';
-			printPos(r.getX(), r.getY(), direction);
+			pos = printPos(r.getX(), r.getY(), direction);
 		} else if (r.getCurrentlyFacing() == EAST) {
 			direction = 'E';
-			printPos(r.getX(), r.getY(), direction);
+			pos = printPos(r.getX(), r.getY(), direction);
 		}
+		
+		return pos;
 
 	}
 
-	private void printPos(int x, int y, char d) {
-		System.out.println(x + " " + y + " " + d);
+	private String printPos(int x, int y, char d) {
+		String pos = x + " " + y + " " + d;
+		return pos;
 	}
 
 	// The rover turn left
